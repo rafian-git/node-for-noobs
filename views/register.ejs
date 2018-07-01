@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+    <script type="text/javascript">
+    function checkUsername(usrNm){
+  var url = '/register/usrnmCheck/'+usrNm;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+   if (this.readyState == 4 && this.status == 200) {
+     if (this.responseText == "Not Available") {
+       document.getElementById("un").style.color = "red";
+     document.getElementById("un").innerHTML = "This Username is " + this.responseText;
+
+     } else {
+       document.getElementById("un").style.color = "green";
+       document.getElementById("un").innerHTML = "This Username is Available";
+     }
+   }
+  };
+  xhttp.open("POST", url, true);
+  xhttp.send();
+  }
+    </script>
+  </head>
+  <body>
+    <form method="POST">
+                              <h1>Registration</h1>
+
+                                  <label for="fName"> Your Fullname </label><br>
+                                  <input name="fName" required="required" type="text" />
+<br><br><br>
+
+                                  <label for="username" id="un"> Your username </label><br>
+                                  <input name="username" required="required"  onkeyup="checkUsername(this.value)"  type="text" />
+
+<br><br><br>
+                                  <label for="password"> Your password </label><br>
+                                  <input name="password" required="required" type="password" />
+
+<br><br><br>
+                                  <input type="submit" value="Register" />
+
+
+                          </form>
+  </body>
+</html>

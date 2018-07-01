@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+</head>
+<body>
+	<h2>Homepage</h2>
+	<% if(user){ %>
+
+    <a href="/logout"><button  style="float: right;top: 1px;background-color:red;">Logout</button></a>
+		<h2>Welcome Mr. <%=user[0].fName %> </h2>
+    <% }
+    else{ %>
+
+      <a href="/login"><button  style="float: right;">Login</button></a>
+      <a href="/register"><button  style="float: right;">Get Started</button></a>
+      <%  }%>
+</body>
+</html>
